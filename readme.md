@@ -1,5 +1,6 @@
 # dotfiles
 
 ```sh
-ln -s ~/dotfiles/.* ~
+ln -s ~/dotfiles/.bash* ~
+ln -s ~/dotfiles/.inputrc ~
 ```

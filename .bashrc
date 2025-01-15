@@ -4,11 +4,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
-export PATH="/home/ycm/.local/bin:$PATH"
-export PATH="/opt/wonderful/bin:$PATH"
+if [ -d /usr/local/texlive/2023/bin/x86_64-linux ]; then
+    export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+fi
+if [ -d /home/ycm/.local/bin ]; then
+    export PATH="/home/ycm/.local/bin:$PATH"
+fi
+if [ -d /opt/wonderful/bin ]; then
+    export PATH="/opt/wonderful/bin:$PATH"
+fi
 
-. /etc/profile.d/vte.sh
+[ -f /etc/profile.d/vte.sh ] && . /etc/profile.d/vte.sh
 
 # misc app/tool-specific --------------------------------------------------- >>>
 

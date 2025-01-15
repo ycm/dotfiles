@@ -1,4 +1,4 @@
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -I "NTUSER*" -I "ntuser*"'
 alias ll='ls -l'
 
 alias cd..='cd ..'
@@ -30,11 +30,13 @@ alias chgrp='chgrp -c --preserve-root'
 
 alias wget='wget -c'
 
-# gvim
-alias gvim='gvim -v'
-
-# alias vi='vim'
-alias vi='gvim'
+if [ -x "$(command -v gvim)" ]
+then
+    alias gvim='gvim -v'
+    alias vi='gvim'
+else
+    alias vi='vim'
+fi
 
 # usage: echo "hello world" | clip
 alias clip='xclip -selection clipboard'
