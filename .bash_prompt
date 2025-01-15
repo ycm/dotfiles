@@ -1,0 +1,19 @@
+NORMAL='\[\033[00m\]'
+CODE_BOLD_FG="\[\e[1;38;5;m\]"
+CODE_FG="\[\e[38;5;m\]"
+
+MAKE_COLOR() {
+    local A="$1"
+    local B="$2"
+    local prefix="${A%%m*}"
+    local suffix="${A#*m}"
+    echo "${prefix}${B}m${suffix}"
+}
+
+FIRST=002
+SECOND=005
+
+FIRST_BOLD_FG=$(MAKE_COLOR "$CODE_BOLD_FG" "$FIRST")
+SECOND_BOLD_FG=$(MAKE_COLOR "$CODE_BOLD_FG" "$SECOND")
+
+export PS1="${NORMAL}\n╭─── (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
