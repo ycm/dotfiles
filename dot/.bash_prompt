@@ -16,4 +16,17 @@ SECOND=005
 FIRST_BOLD_FG=$(MAKE_COLOR "$CODE_BOLD_FG" "$FIRST")
 SECOND_BOLD_FG=$(MAKE_COLOR "$CODE_BOLD_FG" "$SECOND")
 
-export PS1="${NORMAL}\n╭─── (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
+platform='linux'
+if [[ `uname` == MINGW* ]]; then
+    platform='windows'
+fi
+
+if [[ "$platform" == "linux" ]]; then
+    export PS1="${NORMAL}\n╭─── (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
+elif [[ "$platform" == "windows" ]]; then
+    if [[ -n $(net session 2>/dev/null) ]]; then
+        export PS1="${NORMAL}\n╭─── ${SECOND_BOLD_FG}[ADMIN]${NORMAL} (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
+    else
+        export PS1="${NORMAL}\n╭─── (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
+    fi
+fi
