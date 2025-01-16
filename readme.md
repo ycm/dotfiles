@@ -1,6 +1,14 @@
 # dotfiles
 
 ```sh
-ln -s ~/dotfiles/.bash* ~
-ln -s ~/dotfiles/.inputrc ~
+cd ~/dotfiles
+git pull
+ln -snf ~/dotfiles/dot/.* ~
+```
+
+windows:
+- open git bash as admin
+
+```sh
+export MSYS=winsymlinks:nativestrict
 ```
