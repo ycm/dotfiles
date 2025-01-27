@@ -46,8 +46,14 @@ alias pkglist='pacman -Qs --color=always | less -R'
 alias jn='jupyter notebook'
 alias jl='jupyter lab'
 
-alias open='xdg-open 2>/dev/null'
-
-alias km='sudo chmod +0666 /dev/uinput && sudo chmod +0666 /dev/input/by-path/platform-i8042-serio-0-event-kbd && echo "[kmonad]" &&  kmonad ~/garden/kmonad/keymaps/thinkpad.kbd'
-
-alias wlan='sudo iwctl device wlan0 set-property Powered on && sudo iwctl station list && ping archlinux.org'
+platform='linux'
+if [[ `uname` == MINGW* ]]; then
+    platform='windows'
+fi
+if [[ "$platform" == "linux" ]]; then
+    alias open='xdg-open 2>/dev/null'
+    alias km='sudo chmod +0666 /dev/uinput && sudo chmod +0666 /dev/input/by-path/platform-i8042-serio-0-event-kbd && echo "[kmonad]" &&  kmonad ~/garden/kmonad/keymaps/thinkpad.kbd'
+    alias wlan='sudo iwctl device wlan0 set-property Powered on && sudo iwctl station list && ping archlinux.org'
+elif [[ "$platform" == "windows" ]]; then
+    alias open='explorer'
+fi
