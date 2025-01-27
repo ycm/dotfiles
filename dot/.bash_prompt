@@ -22,7 +22,8 @@ if [[ `uname` == MINGW* ]]; then
 fi
 
 if [[ "$platform" == "linux" ]]; then
-    export PS1="${NORMAL}\n╭─── (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
+    DATE=$(date +%Y-%m-%d\ %H:%M\ \(%a\))
+    export PS1="${NORMAL}\n╭─── $DATE ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
 elif [[ "$platform" == "windows" ]]; then
     if [[ -n $(net session 2>/dev/null) ]]; then
         export PS1="${NORMAL}\n╭─── ${SECOND_BOLD_FG}[ADMIN]${NORMAL} (\d \@) ${FIRST_BOLD_FG}\u@\h${NORMAL}:${SECOND_BOLD_FG}\w\n${NORMAL}╰─ \$ "
