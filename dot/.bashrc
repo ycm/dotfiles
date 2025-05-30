@@ -4,6 +4,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# paths -------------------------------------------------------------------- >>>
 if [ -d /usr/local/texlive/2023/bin/x86_64-linux ]; then
     export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 fi
@@ -13,6 +14,7 @@ fi
 if [ -d /opt/wonderful/bin ]; then
     export PATH="/opt/wonderful/bin:$PATH"
 fi
+# <<<
 
 [ -f /etc/profile.d/vte.sh ] && . /etc/profile.d/vte.sh
 
@@ -65,3 +67,24 @@ unset __conda_setup
 # <<<
 
 [ -f "/home/ycm/.ghcup/env" ] && . "/home/ycm/.ghcup/env" # ghcup-env
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# foot --------------------------------------------------------------------- >>>
+if [ "$TERM" = "foot" ]; then
+    osc7_cwd() {
+        local strlen=${#PWD}
+        local encoded=""
+        local pos c o
+        for (( pos=0; pos<strlen; pos++ )); do
+            c=${PWD:$pos:1}
+            case "$c" in
+                [-/:_.!\'\(\)~[:alnum:]] ) o="${c}" ;;
+                * ) printf -v o '%%%02X' "'${c}" ;;
+            esac
+            encoded+="${o}"
+        done
+        printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
+    }
+    PROMPT_COMMAND=${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }osc7_cwd
+fi
+# <<<
