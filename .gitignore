@@ -1,5 +1,4 @@
 *
-!readme.md
-!.gitignore
-!dot
-!assets
+!*/
+!dot/.*
+!assets/*.jpg
