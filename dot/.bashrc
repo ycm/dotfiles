@@ -22,7 +22,7 @@ fi
 
 # exclude single commands from history
 export HISTIGNORE=$'*([\t ])+([-%+,./0-9\:@A-Z_a-z])*([\t ])'
-export LS_COLORS="di=1;34:ln=1;36:so=1;32:pi=1;33:ex=1;31:*.txt=1;35"
+export LS_COLORS="di=1;38;5;12:ln=1;38;5;14:so=1;32:pi=1;33:ex=1;38;5;13"
 export BAT_THEME='gruvbox-dark'
 export MOZ_ENABLE_WAYLAND=1
 # <<<
@@ -88,3 +88,11 @@ if [ "$TERM" = "foot" ]; then
     PROMPT_COMMAND=${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }osc7_cwd
 fi
 # <<<
+
+if command -v neofetch >/dev/null; then
+  if [[ -f ~/dotfiles/assets/splash.jpg ]]; then
+    neofetch --sixel ~/dotfiles/assets/splash.jpg
+  else
+    neofetch
+  fi
+fi
