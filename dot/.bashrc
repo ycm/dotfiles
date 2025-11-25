@@ -4,18 +4,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# paths -------------------------------------------------------------------- >>>
-if [ -d /usr/local/texlive/2023/bin/x86_64-linux ]; then
-    export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
-fi
-if [ -d /home/ycm/.local/bin ]; then
-    export PATH="/home/ycm/.local/bin:$PATH"
-fi
-if [ -d /opt/wonderful/bin ]; then
-    export PATH="/opt/wonderful/bin:$PATH"
-fi
-# <<<
-
 [ -f /etc/profile.d/vte.sh ] && . /etc/profile.d/vte.sh
 
 # misc app/tool-specific --------------------------------------------------- >>>
@@ -89,10 +77,10 @@ if [ "$TERM" = "foot" ]; then
 fi
 # <<<
 
-if command -v neofetch >/dev/null; then
+if command -v fastfetch >/dev/null; then
   if [[ -f ~/dotfiles/assets/splash.jpg ]]; then
-    neofetch --sixel ~/dotfiles/assets/splash.jpg
+    fastfetch --sixel "$XDG_CONFIG_HOME/themes/terminal-splash.jpg"
   else
-    neofetch
+    fastfetch
   fi
 fi
