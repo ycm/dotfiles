@@ -2,7 +2,7 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    // "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -13,11 +13,12 @@
         "clock"
     ],
     "modules-right": [
-        "idle_inhibitor",
         "pulseaudio",
         "network",
+        "backlight",
         "battery",
-        "tray"
+        "tray",
+        "idle_inhibitor"
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -42,7 +43,7 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%A %B %d, %Y}"
     },
     "battery": {
         "states": {
@@ -81,6 +82,11 @@
         "format-linked": "{ifname} (No IP) 󰊗",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "min-brightness": 1
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float

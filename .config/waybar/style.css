@@ -1,7 +1,6 @@
 * {
     font-family: monospace;
     font-size: 14px;
-    margin-top: 2px;
 }
 
 window#waybar {
@@ -13,48 +12,54 @@ window#waybar {
 
 #clock,
 #battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
 #network,
 #pulseaudio,
-#wireplumber,
-#custom-media,
+#backlight,
 #tray,
-#mode,
-#idle_inhibitor
-{
+#idle_inhibitor {
     background: #1e1e2e;
     color: #cdd6f4;
-    border-radius: 10px;
-    padding: 4px 12px;
+    border-radius: 999px;
+    padding: 4px 16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 12px;
+    border: 3px solid #636680;
+}
+
+#idle_inhibitor {
+    margin-right: 10px;
 }
 
 #workspaces {
     background: #1e1e2e;
-    border-radius: 16px;
-    padding: 4px 4px;
-    margin: 0 4px;
+    border-radius: 999px;
+    border: 3px solid #636680;
+    /* padding: 0 4px; */
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 12px;
 }
 
 #workspaces button {
     background: transparent;
     color: #cdd6f4;
     border: none;
-    border-radius: 16px;
-    padding: 0 4px;
-    margin: 0 0;
+    border-radius: 999px;
+    padding: 0 8px;
     box-shadow: none;
+    min-height: 0;
 }
 
+/* Active workspace */
 #workspaces button.active {
-    background: #89b4fa;
+    background: #99abc9;
     color: #1e1e2e;
 }
 
+/* Hover */
 #workspaces button:hover {
     background: #45475a;
     box-shadow: none;
 }
+

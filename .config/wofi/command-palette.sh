@@ -4,7 +4,7 @@ declare -A commands=(
     # ["reload hyprland"]="hyprctl reload"
     ["pcscd stop (guest)"]="sudo systemctl stop pcscd.service && sudo systemctl stop pcscd.socket"
     ["pcscd start (host)"]="sudo systemctl start pcscd.socket && sudo systemctl start pcscd.service"
-    ["screenshot"]="grim -g \"\$(slurp)\" - | tee ~/pictures/screenshots/screenshot-\$(date +%Y%m%d-%H%M%S).png | wl-copy --type image/png",
+    ["screenshot (select region)"]="mkdir -p ~/pictures/screenshots && grim -g \"\$(slurp)\" - | tee ~/pictures/screenshots/screenshot-\$(date +%Y%m%d-%H%M%S).png | wl-copy --type image/png --fork"
 )
 
 choice=$(printf '%s\n' "${!commands[@]}" | sort | wofi \
