@@ -1,0 +1,60 @@
+* {
+    font-family: monospace;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor
+{
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 10px;
+    padding: 4px 12px;
+}
+
+#workspaces {
+    background: #1e1e2e;
+    border-radius: 16px;
+    padding: 4px 4px;
+    margin: 0 4px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: #cdd6f4;
+    border: none;
+    border-radius: 16px;
+    padding: 0 4px;
+    margin: 0 0;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background: #89b4fa;
+    color: #1e1e2e;
+}
+
+#workspaces button:hover {
+    background: #45475a;
+    box-shadow: none;
+}
