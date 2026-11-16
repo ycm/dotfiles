@@ -37,8 +37,8 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "foot"
-local fileManager = "dolphin"
-local menu        = "hyprlauncher"
+local fileManager = "nautilus"
+local menu        = "wofi --show drun"
 
 
 -------------------
@@ -54,9 +54,11 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd(terminal)
   hl.exec_cmd("nm-applet")
   hl.exec_cmd("waybar & hyprpaper & firefox")
+  hl.exec_cmd("hypridle")
   -- hl.exec_cmd("waybar")
   -- hl.exec_cmd("hyrpaper")
   hl.exec_cmd("sudo -n /usr/bin/kmonad /home/ycm/projects/kmonad-kbd/x1cg12.kbd")
+  hl.exec_cmd("fcitx5 -d")
 end)
 
 
@@ -69,6 +71,9 @@ end)
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
+hl.env("GTK_IM_MODULE", "fcitx")
+hl.env("QT_IM_MODULE", "fcitx")
+hl.env("XMODIFIERS", "@im=fcitx")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -275,10 +280,16 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("~/.config/wofi/command-palet
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
--- hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+-- hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("wofi --show drun"))
+
+-- hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen("maximized", "toggle"))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({action = "toggle"}))
+
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))

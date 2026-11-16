@@ -27,8 +27,17 @@
         "window-rewrite-default": " ",
         "window-rewrite": {
             "class<firefox>": " ",
-            "foot": " ",
-            "code": "󰨞"
+            "class<Wfica>": " ",
+            "class<org.gnome.Nautilus>": " ",
+            "class<org.gnome.TextEditor>": " ",
+            "class<org.mozilla.Thunderbird>": " ",
+            "class<mullvad-vpn>": "󰖂 ",
+            "class<org.gnome.Boxes>": " ",
+            "class<libreoffice-writer>": "󰈭 ",
+            "class<libreoffice-calc>": "󰈜 ",
+            "class<libreoffice-impress>": "󰈨 ",
+            "class<libreoffice-draw>": "󰇟 ",
+            "foot": " "
         }
     },
     "idle_inhibitor": {
@@ -103,7 +112,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [" ", " ", " "]
         },
         "on-click": "pavucontrol"
     },
